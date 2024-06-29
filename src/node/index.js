@@ -98,7 +98,9 @@ exports.protocols = {
  */
 
 exports.serialize = {
-  'application/x-www-form-urlencoded': qs.stringify,
+  'application/x-www-form-urlencoded': (obj) => {
+    return qs.stringify(obj, { indices: false, strictNullHandling: true });
+  },
   'application/json': safeStringify
 };
 
