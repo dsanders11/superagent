@@ -38,6 +38,7 @@ describe('request.serializeObject()', () => {
     serialize({ '&name&': 'tj' }, '%26name%26=tj');
     serialize({ hello: '`test`' }, 'hello=%60test%60');
     serialize({ $hello: 'test' }, '$hello=test');
+    serialize({ foo: 'foo', foo: 'bar' }, 'foo=foo&foo=bar');
   });
 });
 
