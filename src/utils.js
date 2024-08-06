@@ -1,14 +1,3 @@
-let RE2;
-let hasRE2 = true;
-
-try {
-  RE2 = require('re2');
-} catch {
-  hasRE2 = false;
-}
-
-const SafeRegExp = hasRE2 ? RE2 : RegExp;
-
 
 /**
  * Return the mime type for the given `str`.
@@ -125,7 +114,7 @@ exports.mixin = (target, source) => {
  */
 
 exports.isGzipOrDeflateEncoding = (res) => {
-  return new SafeRegExp(/^\s*(?:deflate|gzip)\s*$/).test(res.headers['content-encoding']);
+  return new RegExp(/^\s*(?:deflate|gzip)\s*$/).test(res.headers['content-encoding']);
 };
 
 /**
@@ -135,5 +124,5 @@ exports.isGzipOrDeflateEncoding = (res) => {
  */
 
 exports.isBrotliEncoding = (res) => {
-  return new SafeRegExp(/^\s*(?:br)\s*$/).test(res.headers['content-encoding']);
+  return new RegExp(/^\s*(?:br)\s*$/).test(res.headers['content-encoding']);
 };
